@@ -25,6 +25,10 @@ public class Customer {
         this.address = address;
     }
 
+    public Customer(){
+
+    }
+
     /**
      * retrieves customer Id
      * @return

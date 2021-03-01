@@ -180,7 +180,6 @@ public class AddressInventoryImpl implements AddressInventory{
                             " ADDRESS_1 varchar2(20)," +
                             " ADDRESS_2 varchar2(20)," +
                             " POST_TOWN varchar2(20)," +
-                            " POST_TOWN varchar2(20)," +
                             " POST_CODE varchar2(20)," +
                             " ADDRESS_ID INTEGER," +
                             " PRIMARY KEY (ADDRESS_ID)" +

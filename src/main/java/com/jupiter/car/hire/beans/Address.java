@@ -19,6 +19,10 @@ public class Address {
         this.postcode = postcode;
     }
 
+    public Address(){
+
+    }
+
     /**
      * retrieves address ID
      * @return
