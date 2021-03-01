@@ -5,16 +5,23 @@ import com.jupiter.car.hire.beans.Payment;
 import com.jupiter.car.hire.beans.Vehicle;
 import com.jupiter.car.hire.enums.VehicleType;
 import com.jupiter.car.hire.inventories.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
+@Component
 public class BookingServiceImpl implements BookingService{
+
+    @Autowired
+    BookingInventoryImpl bookingInventory;
+
+    @Autowired
+    VehicleInventory vehicleInventory;
 
     Payment payment = null;
     PaymentInventory paymentInventory = new PaymentInventoryImpl();
     CustomerInventory customerInventory = new CustomerInventoryImpl();
-    VehicleInventory vehicleInventory = new VehicleInventoryImpl();
-    BookingInventory bookingInventory = new BookingInventoryImpl();
 
     /**
      * retrieves the customer
@@ -31,6 +38,35 @@ public class BookingServiceImpl implements BookingService{
     }
 
     /**
+     *Updates booking details
+     * @param booking
+     */
+    public void updateBooKing(Booking booking){
+        bookingInventory.updateNewBooking(booking);
+    }
+
+    /**
+     * Closes a booking when the
+     * vehicle  is returned and payment is completed
+     * @param booking
+     */
+    public void closeBooking(Booking booking){
+        bookingInventory.closeBooking(booking);
+    }
+
+    /**
+     * retrieves booking details using thee booking reference
+     * @param bookingReference
+     * @return
+     */
+    public Booking getBookingDetails(long bookingReference){
+        Booking booking = bookingInventory.retrieveBookingByRefNumber(bookingReference);
+        return booking;
+
+    }
+
+
+    /**
      * creates new booking uding
      * customer,vehicle and
      * deposite details
@@ -39,7 +75,6 @@ public class BookingServiceImpl implements BookingService{
      * @param vehicleId
      * @param startDate
      * @param endDate
-     * @param rentalPrice
      * @param deposit
      * @param vehicleDamaged
      * @return
@@ -49,27 +84,42 @@ public class BookingServiceImpl implements BookingService{
                                long vehicleId,
                                Date startDate,
                                Date endDate,
-                               double rentalPrice,
                                double deposit,
-                               boolean vehicleDamaged){
+                               boolean vehicleDamaged,
+                               int intendedDays){
 
-
+          double rentalPrice = calculateRentalPrice( vehicleId,  intendedDays);
           Booking booking = new Booking(customerId,
                                         vehicleId,
                                         startDate,
                                         endDate,
                                         rentalPrice,
                                         deposit,
-                                        vehicleDamaged);
-
+                                        vehicleDamaged,intendedDays);
 
 
         long bookingReference =  bookingInventory.createNewBooking(booking);
 
-
-
       return bookingReference;
 
+    }
+
+    public double calculateRentalPrice(Long vehicleId, int daysNum){
+        double rentalPrice = 0;
+        double dailyPrice = 0;
+        Vehicle vehicle = vehicleInventory.retrieveVehicleById(vehicleId);
+        VehicleType vehicleType = vehicle.getVehicleType();
+        if(vehicleType.toString().equalsIgnoreCase("car")){
+            dailyPrice = 25;
+        }else if(vehicleType.toString().equalsIgnoreCase("estate")){
+            dailyPrice = 35;
+        }else{
+            dailyPrice = 50;
+        }
+
+        rentalPrice = dailyPrice * daysNum;
+
+        return rentalPrice;
     }
 
 

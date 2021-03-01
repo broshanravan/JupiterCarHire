@@ -12,14 +12,19 @@ public interface BookingService {
 
     public boolean isBookingClosed(long bookingReference, double paymentAmount, double damageDue);
 
+    public Booking getBookingDetails(long bookingReference);
+
+    public void updateBooKing(Booking booking);
+
+    public void closeBooking(Booking booking);
+
     public long createNewBooking(double depositAmount,
                                  long customerId,
                                  long vehicleId,
                                  Date startDate,
                                  Date endDate,
-                                 double rentalPrice,
                                  double deposit,
-                                 boolean vehicleDamaged);
+                                 boolean vehicleDamaged, int intendedDays);
 
 
 

@@ -21,7 +21,7 @@ public class VehicleServiceImpl implements VehicleService{
     }
 
     public void updateVehicleDetails(Vehicle vehicle){
-        vehicleInventory.updateVehicleDetail();
+        vehicleInventory.updateVehicleDetail(vehicle);
 
     }
 }

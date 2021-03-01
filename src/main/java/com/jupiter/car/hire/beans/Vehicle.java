@@ -18,6 +18,16 @@ public class Vehicle {
         this.pricePerDay = pricePerDay;
     }
 
+    public Vehicle(VehicleType vehicleType,  String registration, long engineSize, double pricePerDay) {
+        this.vehicleId = vehicleId;
+        this.vehicleType = vehicleType;
+
+        this.registration = registration;
+        this.engineSize = engineSize;
+        this.pricePerDay = pricePerDay;
+    }
+
+
     public Vehicle(){
 
     }

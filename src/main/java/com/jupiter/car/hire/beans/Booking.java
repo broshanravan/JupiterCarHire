@@ -13,11 +13,12 @@ public class Booking {
     private double deposit;
     private boolean vehicleDamaged;
     private boolean closed;
+    private int intendedDays;
 
     public Booking(long bookingId, long customerId,
                    long vehicleId, Date startDate,
                    Date endDate, double totalPrice,
-                   double deposit, boolean vehicleDamaged, boolean  closed) {
+                   double deposit, boolean vehicleDamaged, boolean  closed,int intendedDays) {
         this.bookingId = bookingId;
         this.customerId = customerId;
         this.vehicleId = vehicleId;
@@ -27,12 +28,13 @@ public class Booking {
         this.deposit = deposit;
         this.vehicleDamaged = vehicleDamaged;
         this.closed = closed;
+        this.intendedDays = intendedDays;
     }
 
     public Booking(long customerId,
                    long vehicleId, Date startDate,
                    Date endDate, double totalPrice,
-                   double deposit, boolean vehicleDamaged) {
+                   double deposit, boolean vehicleDamaged ,int intendedDays) {
         this.bookingId = bookingId;
         this.customerId = customerId;
         this.vehicleId = vehicleId;
@@ -41,6 +43,7 @@ public class Booking {
         this.totalPrice = totalPrice;
         this.deposit = deposit;
         this.vehicleDamaged = vehicleDamaged;
+        this.intendedDays = intendedDays;
     }
 
     public Booking(){
@@ -192,5 +195,23 @@ public class Booking {
      */
     public void setClosed(boolean closed) {
         this.closed = closed;
+    }
+
+    /**
+     * retrieve original days
+     * it was intended to rend
+     * @return
+     */
+    public int getIntendedDays() {
+        return intendedDays;
+    }
+
+    /**
+     * to set original days
+     * it was intended to ren
+     * @param intendedDays
+     */
+    public void setIntendedDays(int intendedDays) {
+        this.intendedDays = intendedDays;
     }
 }

@@ -9,6 +9,16 @@ public class Address {
     private String town;
     private String postcode;
 
+
+    public Address(String houseName, String houseNumber, String address1, String address2, String town, String postcode) {
+        this.houseName = houseName;
+        this.houseNumber = houseNumber;
+        this.address1 = address1;
+        this.address2 = address2;
+        this.town = town;
+        this.postcode = postcode;
+    }
+
     /**
      * retrieves address ID
      * @return

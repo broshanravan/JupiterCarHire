@@ -5,22 +5,12 @@ import com.jupiter.car.hire.inventories.CustomerInventory;
 import com.jupiter.car.hire.inventories.CustomerInventoryImpl;
 
 public class CustomerServiceImpl implements CustomerService {
+
     CustomerInventory customerInventory = new CustomerInventoryImpl();
 
-    /**
-     * searching for an existing customer
-     * using their name and
-     * address details
-     * @param houseNameNumber
-     * @param postCode
-     * @param firstName
-     * @param surname
-     * @param companyName
-     * @return
-     */
-    public Customer findCustomer(String houseNameNumber, String postCode, String firstName, String surname, String companyName){
-        Customer customer = customerInventory.retriveCustomerDetails(houseNameNumber, postCode, firstName, surname, companyName);
 
+    public Customer findCustomerByEmail(String email){
+        Customer customer = customerInventory.retrieveCustomerByEmail(email);
 
         return customer;
     }
@@ -29,8 +19,8 @@ public class CustomerServiceImpl implements CustomerService {
      * to add a new customer
      * @param customer
      */
-    public String addCustomer(Customer customer){
-        String customerReference = customerInventory.createNewCustomer(customer);
+    public long addCustomer(Customer customer){
+        long customerReference = customerInventory.createNewCustomer(customer);
 
         return customerReference;
 

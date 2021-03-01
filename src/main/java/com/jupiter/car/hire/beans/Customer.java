@@ -14,6 +14,16 @@ public class Customer {
     private String telephone;
     private Address address;
 
+    public Customer(long addressId, String firstName, String surname, String companyName, CustomerType customerType, String email, String telephone, Address address) {
+        this.addressId = addressId;
+        this.firstName = firstName;
+        this.surname = surname;
+        this.companyName = companyName;
+        this.customerType = customerType;
+        this.email = email;
+        this.telephone = telephone;
+        this.address = address;
+    }
 
     /**
      * retrieves customer Id

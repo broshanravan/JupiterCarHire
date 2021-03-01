@@ -4,9 +4,11 @@ import com.jupiter.car.hire.beans.Address;
 import com.jupiter.car.hire.beans.Booking;
 import com.jupiter.car.hire.beans.Customer;
 import com.jupiter.car.hire.enums.CustomerType;
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 
+@Component
 public class BookingInventoryImpl implements BookingInventory{
 
     private static Connection con;
@@ -102,8 +104,9 @@ public class BookingInventoryImpl implements BookingInventory{
                             " START_DATE," +
                             " DEPOSIT," +
                             " DAMAGED " +
+                            " INTENDED_DAYS " +
                             ")"+
-                    " TEL_NUM) values(?,?,?,?,?);";
+                    " TEL_NUM) values(?,?,?,?,?,?);";
             PreparedStatement preparedStatement = con.prepareStatement(saveQuery, Statement.RETURN_GENERATED_KEYS);
 
             preparedStatement.setLong(1, booking.getCustomerId());
@@ -111,6 +114,8 @@ public class BookingInventoryImpl implements BookingInventory{
             long millis=System.currentTimeMillis();
             preparedStatement.setDate(3, new java.sql.Date(millis));
             preparedStatement.setDouble(4, booking.getDeposit());
+
+            preparedStatement.setInt(5, booking.getIntendedDays());
             int damaged = 0;
             if(booking.isVehicleDamaged()){
                 damaged = 1;
@@ -192,7 +197,8 @@ public class BookingInventoryImpl implements BookingInventory{
                     " DEPOSIT = ?," +
                     " TOTAL_PRICE = ?," +
                     " DAMAGED = ? " +
-                    ") where  BOOKING_ID =" + booking.getBookingId() + ";";
+                    " INTENDED_DAYS = ? " +
+                    ")WHERE  BOOKING_ID =" + booking.getBookingId() + ";";
             PreparedStatement preparedStatement = con.prepareStatement(saveQuery, Statement.RETURN_GENERATED_KEYS);
 
             preparedStatement.setLong(1, booking.getVehicleId());
@@ -200,6 +206,7 @@ public class BookingInventoryImpl implements BookingInventory{
             preparedStatement.setDate(2, new java.sql.Date(millis));
             preparedStatement.setDouble(3, booking.getDeposit());
             preparedStatement.setDouble(4, booking.getTotalPrice());
+            preparedStatement.setInt(4, booking.getIntendedDays());
 
             int damaged = 0;
             if(booking.isVehicleDamaged()){
@@ -277,7 +284,8 @@ public class BookingInventoryImpl implements BookingInventory{
                             " END_DATE DATE," +
                             " DEPOSIT DECIMAL," +
                             " TOTAL_PRICE DECIMAL," +
-                            " DAMAGED INTEGER" +
+                            " DAMAGED INTEGER," +
+                            " INTENDED_DAYS INTEGER," +
                             " CLOSED INTEGER" +
                             " PRIMARY KEY (BOOKING_ID)"+
                     ");";

@@ -1,0 +1,40 @@
+*{
+	margin:5;
+	padding:0;
+	font-family:"Josefin Sans", sans-serif;
+	
+}
+body{
+	background-color: #cfdee0;
+	
+}
+
+.btn-wrapper{
+	width:100%;
+	heigth:100vh;
+}
+
+.myDiv {
+			padding-left: 500px;
+}
+.btn{
+	width:80px;
+	height:30px;
+	background:linear-gradient(to top, #00154c,#12376e, #23487f);
+	color:#fff;
+	border-radius:50px;
+	border:none;
+	outline:none;
+	cursor:pointer;
+	box-shadow:0 15px 30px rgba(0,0,0,0.5);
+}
+
+.btn span{
+	font-size:10px;
+	text-transform:uppercase;
+	letter-spacing:1px;
+}
+h3{
+        font: bold 25px courier !important;
+}
+
