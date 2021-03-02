@@ -14,6 +14,8 @@ public interface BookingService {
 
     public Booking getBookingDetails(long bookingReference);
 
+    public Booking getBookingDetailsByVehicleReg(String registration);
+
     public void updateBooKing(Booking booking);
 
     public void closeBooking(Booking booking);

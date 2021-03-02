@@ -114,4 +114,44 @@ public class WelcomeController {
         return "index";
     }
 
+    /**
+     * retrieves an exist booking using the booking
+     * Reference number
+     */
+    @RequestMapping(value="/retrieveBookingByEmail")
+    @ResponseBody
+    public String retrieveBookingByVehicleReg(@RequestParam String registration, ModelMap  model){
+        Booking booking = bookingService.getBookingDetailsByVehicleReg(registration);
+
+        if(booking.getBookingId() !=0) {
+            model.put("deposit", booking.getDeposit() );
+            model.put("endDate", booking.getEndDate());
+            model.put("intendedDays", booking.getIntendedDays());
+            model.put("startDate", booking.getStartDate());
+            model.put("totalPrice", booking.getTotalPrice());
+
+            Long customerId= booking.getCustomerId();
+            Customer customer = customerService.findCustomer(customerId);
+            model.put("firstName", customer.getFirstName());
+            model.put("Ssurname", customer.getSurname());
+            model.put("customerType", customer.getCustomerType().toString());
+            model.put("email", customer.getEmail());
+            model.put("telephone", customer.getTelephone());
+            model.put("companyName", customer.getCompanyName());
+
+            Address address = customer.getAddress();
+            model.put("houseNumber", address.getHouseNumber());
+            model.put("houseName", address.getHouseName());
+            model.put("address1", address.getAddress2());
+            model.put("address2", address.getAddress2());
+            model.put("town", address.getTown());
+            model.put("postCode", address.getPostcode());
+            model.put("addressID", address.getAddressId());
+
+            return "booking";
+        }
+        return "index";
+    }
+
+
 }

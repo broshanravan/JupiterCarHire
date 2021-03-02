@@ -14,7 +14,7 @@ import java.util.Date;
 public class BookingServiceImpl implements BookingService{
 
     @Autowired
-    BookingInventoryImpl bookingInventory;
+    BookingInventory bookingInventory;
 
     @Autowired
     VehicleInventory vehicleInventory;
@@ -147,6 +147,17 @@ public class BookingServiceImpl implements BookingService{
     }
 
     /**
+     * Uses car registration to retrieve the booking
+     * contract for it
+     * @param carReg
+     * @return
+     */
+    public Booking getBookingDetailsByVehicleReg(String carReg){
+        Booking booking = bookingInventory.retrieveBookingByCarReg( carReg);
+        return booking;
+    }
+
+    /**
      * calculating final amount
      * due from customer
      * @param startDate
@@ -165,5 +176,7 @@ public class BookingServiceImpl implements BookingService{
 
         return paymentDue;
      }
+
+
 
 }
