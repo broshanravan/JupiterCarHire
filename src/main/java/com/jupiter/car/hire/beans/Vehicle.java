@@ -6,10 +6,10 @@ public class Vehicle {
     private long vehicleId;
     private VehicleType vehicleType;
     private String registration;
-    private long engineSize;
+    private double engineSize;
     private double pricePerDay;
 
-    public Vehicle(long vehicleId, VehicleType vehicleType,  String registration, long engineSize, double pricePerDay) {
+    public Vehicle(long vehicleId, VehicleType vehicleType,  String registration, double engineSize, double pricePerDay) {
         this.vehicleId = vehicleId;
         this.vehicleType = vehicleType;
 
@@ -18,7 +18,7 @@ public class Vehicle {
         this.pricePerDay = pricePerDay;
     }
 
-    public Vehicle(VehicleType vehicleType,  String registration, long engineSize, double pricePerDay) {
+    public Vehicle(VehicleType vehicleType,  String registration, double engineSize, double pricePerDay) {
         this.vehicleId = vehicleId;
         this.vehicleType = vehicleType;
 
@@ -89,7 +89,7 @@ public class Vehicle {
      * engin size
      * @return
      */
-    public long getEngineSize() {
+    public double getEngineSize() {
         return engineSize;
     }
 
@@ -98,7 +98,7 @@ public class Vehicle {
      * be set
      * @param engineSize
      */
-    public void setEngineSize(long engineSize) {
+    public void setEngineSize(double engineSize) {
         this.engineSize = engineSize;
     }
 

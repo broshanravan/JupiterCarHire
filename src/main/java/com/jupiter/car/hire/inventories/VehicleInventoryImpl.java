@@ -74,7 +74,7 @@ public class VehicleInventoryImpl implements VehicleInventory {
                     " ) values(?,?,?,?,?,?);";
             PreparedStatement preparedStatement = con.prepareStatement(saveQuery, Statement.RETURN_GENERATED_KEYS);
 
-            preparedStatement.setLong(1, vehicle.getEngineSize());
+            preparedStatement.setDouble(1, vehicle.getEngineSize());
             preparedStatement.setString(2, vehicle.getRegistration());
             preparedStatement.setString(3, vehicle.getVehicleType().toString());
 
@@ -112,7 +112,7 @@ public class VehicleInventoryImpl implements VehicleInventory {
             PreparedStatement preparedStatement = con.prepareStatement(saveQuery, Statement.RETURN_GENERATED_KEYS);
 
             preparedStatement.setString(1, vehicle.getRegistration());
-            preparedStatement.setLong(2, vehicle.getEngineSize());;
+            preparedStatement.setDouble(2, vehicle.getEngineSize());;
             preparedStatement.setString(3, vehicle.getVehicleType().toString());
 
             preparedStatement.execute();
