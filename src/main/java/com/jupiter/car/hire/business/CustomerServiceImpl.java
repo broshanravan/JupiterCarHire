@@ -3,10 +3,12 @@ package com.jupiter.car.hire.business;
 import com.jupiter.car.hire.beans.Customer;
 import com.jupiter.car.hire.inventories.CustomerInventory;
 import com.jupiter.car.hire.inventories.CustomerInventoryImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class CustomerServiceImpl implements CustomerService {
 
-    CustomerInventory customerInventory = new CustomerInventoryImpl();
+    @Autowired
+    CustomerInventory customerInventory;
 
 
     public Customer findCustomerByEmail(String email){
@@ -20,10 +22,17 @@ public class CustomerServiceImpl implements CustomerService {
      * @param customer
      */
     public long addCustomer(Customer customer){
+
         long customerReference = customerInventory.createNewCustomer(customer);
 
         return customerReference;
 
+    }
+
+    public Customer findCustomer(long customerId){
+        Customer customer = customerInventory.getCustomerById(customerId);
+
+        return customer;
     }
 
     /**

@@ -20,13 +20,13 @@
 
 				<tr height="40px">
 					<td><label for ="registrationLbl">Registration</label></td>
-					<td><input type="text" id="Registration"/></td>
+					<td><input type="text" id="registration" val;ue="${registration}"/></td>
 				</tr>
 				<tr height="40px" >
 					<td><label for="vehicleTypeLbl">Vehicle Type</label></td>
 
 					<td>
-							<select name="vehicleTypeBox" id="vehicleType">
+							<select name="vehicleTypeBox" id="vehicleType" value="${vehicleType}">
 								<option value="selectType">Please select</option>
 								<option value="largeVan">large Van</option>
 								<option value="Estate">Estate car</option>
@@ -38,11 +38,11 @@
 
 				<tr height="40px">
 					<td><label for="engineSizeLbl">Engine Size</label></td>
-					<td><input type="text" id="engineSize"/></td>
+					<td><input type="text" id="engineSize" value="${engineSize}"/></td>
 				</tr>
 				<tr height="40px" >
 					<td><label for ="dailyRentalPriceLbl">Daily Rental Price</label></td>
-					<td><input type="text" id="dailyRentalPrice"/></td>
+					<td><input type="text" id="dailyRentalPrice" value="${dailyRentalPrice}"/></td>
 				</tr>
 			</table>
 

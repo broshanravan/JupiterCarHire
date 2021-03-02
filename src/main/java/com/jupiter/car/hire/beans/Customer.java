@@ -25,6 +25,16 @@ public class Customer {
         this.address = address;
     }
 
+    public Customer( String firstName, String surname, String companyName, CustomerType customerType, String email, String telephone, Address address) {
+        this.firstName = firstName;
+        this.surname = surname;
+        this.companyName = companyName;
+        this.customerType = customerType;
+        this.email = email;
+        this.telephone = telephone;
+        this.address = address;
+    }
+
     public Customer(){
 
     }

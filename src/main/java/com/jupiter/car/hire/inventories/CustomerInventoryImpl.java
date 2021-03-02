@@ -16,6 +16,39 @@ public class CustomerInventoryImpl implements CustomerInventory{
 
     }
 
+    public Customer getCustomerById(long customerId){
+        Customer customer = new Customer();
+        if (!isConnectionValid()){
+            getConnection();
+        }
+        try {
+            String findQuery ="SELECT * FROM CUSTOMER_INVENTORY c WHERE c.CUSTOMER_Id = " + customerId ;
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery(findQuery);
+            while (rs.next()) {
+                customer.setCustomerId(rs.getInt(1));
+                customer.setFirstName(rs.getString(2));
+                customer.setSurname(rs.getString(3));
+                customer.setCompanyName(rs.getString(4));
+                customer.setCustomerType(CustomerType.valueOf(rs.getString(5)));
+                customer.setEmail(rs.getString(5));
+                long addressId = rs.getLong(6);
+                Address address = addressInventory.getAddressById(addressId);
+                customer.setAddress(address);
+
+            }
+        }catch(java.sql.SQLException jse){
+            jse.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch(java.sql.SQLException jse){
+                jse.printStackTrace();
+            }
+        }
+
+        return customer;
+    }
 
     public Customer retrieveCustomerByEmail(String customerEmail){
 

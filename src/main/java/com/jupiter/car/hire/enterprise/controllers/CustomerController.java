@@ -7,6 +7,7 @@ import com.jupiter.car.hire.enums.CustomerType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -16,15 +17,49 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
 
+    /**
+     * to retrieve customer detail
+     * and pass it to the front controller
+     * in order to be desplayes in
+     * The JSP
+     * @param email
+     * @param model
+     * @return
+     */
     @RequestMapping(value="/getCustomer")
-    public Customer retrieveCustomer(@RequestParam String email, Model model){
+    public Customer retrieveCustomer(@RequestParam String email, ModelMap model){
         Customer customer = customerService.findCustomerByEmail(email);
-
-
+        model.put("companyName",customer.getCompanyName());
+        model.put("costumerType",customer.getCustomerType().toString());
+        model.put("mail",customer.getEmail());
+        model.put("dirstName",customer.getFirstName());
+        model.put("surname",customer.getSurname());
+        model.put("telephone",customer.getTelephone());
+        model.put("customerId",customer.getCustomerId());
         return customer;
     }
 
 
+    /**
+     * To save the new customer
+     * using Details passed by front
+     * controller from
+     * The JSP page
+     * @param addressId
+     * @param firstName
+     * @param surname
+     * @param companyName
+     * @param customerType
+     * @param email
+     * @param telephone
+     * @param houseName
+     * @param houseNumber
+     * @param address1
+     * @param address2
+     * @param town
+     * @param postcode
+     * @param model
+     */
     @RequestMapping(value="/getCustomer")
     public void createNewCustomer(@RequestParam long addressId,
                                   @RequestParam  String firstName,

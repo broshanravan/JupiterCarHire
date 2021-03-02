@@ -22,13 +22,13 @@
 			</script>
 		</div>
 
-			<h3 for="velicletDetaildLbl">Vehicle Details:</h3>
+			<h3 for="vehicleDetailsLbl">Vehicle Details:</h3>
 			<table>
 				<tr height="40px" >
 					<td " ><label for="vehicleTypeLbl">Vehicle Type</label></td>
 
 					<td>
-							<select name="vehicleTypeBox" id="vehicleType">
+							<select name="vehicleTypeBox" id="vehicleType" value="${vehicleType}">
 								<option value="selectType">Please select</option>
 								<option value="largVan">larg Van</option>
 								<option value="Estate">Estate car</option>
@@ -41,7 +41,7 @@
 				<tr height="40px">
 					<td><label for="dayNumLbl">Number of Days</label></td>
 					<td>
-						<select name="dayNumberBox" id="dayNum">
+						<select name="dayNumberBox" id="intendedDays" value="${intendedDays"}>
 								<option value="o">Please select</option>
 								<option value="1">one</option>
 								<option value="2">Two</option>
@@ -63,7 +63,7 @@
 					<tr height="40px">
 						<td><label for="titleLba">Title</label></td>
 						<td>
-								<select name ="titlr" id="title">
+								<select name ="title" id="title" value="${title}">
 									<option value="selectTtle">Please select</option>
 									<option value="Mr">Mr</option>
 									<option value="Mrs">Mrs</option>
@@ -73,13 +73,13 @@
 						</td>
 
 						<td><label for ="firstNsmeLbl">First Name</label></td>
-						<td><input type="text" id="firstName"/></td>
+						<td><input type="text" id="firstName" value="${firstName}"/></td>
 
 						<td><label for="surnameLbl">Surname</label></td>
-						<td><input type="text" id="surname"/></td>
+						<td><input type="text" id="surname" value=$"{surname}"/></td>
 
 						<td><label for ="CompanyNameLbl">Company Name</label></td>
-						<td><input type="text" id="CompanyNam"/></td>
+						<td><input type="text" id="CompanyNam" value="${CompanyNam"}/></td>
 					</tr>
 
 
@@ -91,31 +91,31 @@
 
 									<tr height="40px">
 										<td><label for="houseNumLbl">House Number</label></td>
-										<td><input type="text" id="houseNum"/></td>
+										<td><input type="text" id="houseNum" value="${houseNum}"/></td>
 
 										<td><label for="houseNameeLbl">House Name</label></td>
-										<td><input type="text" id="houseName"/></td>
+										<td><input type="text" id="houseName" value="${houseName}"/></td>
 									</tr>
 
 									<tr height="40px">
 										<td><label for="addlLbl">Adresse</label></td>
-										<td><input type="text" id="add1Fld"/></td>
+										<td><input type="text" id="address1" value="${address1}"/></td>
 
 										<td><label for="add2lbl"></label></td>
-										<td><input type="text" id="add2Fld"/></td>
+										<td><input type="text" id="address2" value="${address2}"/></td>
 									</tr>
 
 									<tr height="40px">
 										<td ><label for="townLbl">Post Town</label></td>
-										<td><input type="text" id="townFld"/></td>
+										<td><input type="text" id="town" value="${town}"/></td>
 
 										<td><label for="postCodeLbl">Post Code</label></td>
-										<td><input type="text" id="postCodeFld"/></td>
+										<td><input type="text" id="postCode"  value="${postCode}"/></td>
 									</tr>
 
 									<tr height="40px">
 										<td><label for="telLbl">Telephone Number</label></td>
-										<td><input type="text" id="tellFld"/></td>
+										<td><input type="text" id="telephone" value="${telephone}"/></td>
 									</tr>
 									<tr height="40px">
 										<td><label for="blnk1">&emsp;</label></td>
@@ -130,17 +130,17 @@
 				<table>
 						<tr height="40px">
 							<td><label for="total">Total Due &#163;</label></td>
-							<td><input type="text" id="total"/></td>
+							<td><input type="text" id="total" value="${total}"/></td>
 
 							<td><label for="sp1">&emsp;</label></td>
 
 							<td><label for="depositLbl">Deposit &#163;</label></td>
-							<td><input type="text" id="depositFld"/></td>
+							<td><input type="text" id="deposit" value="${deposit}"/></td>
 
 							<td><label for="sp2"&emsp;</label></td>
 
 							<td><label for="balance">Balance &#163;</label></td>
-							<td><input type="text" id="balance"/></td>
+							<td><input type="text" id="balance" id="${balance}"/></td>
 						<tr>
 				</table>
 			</div>
