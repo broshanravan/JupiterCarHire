@@ -30,7 +30,7 @@ public class BookingController {
      * uses to user input to create a new bookinf
      */
     @RequestMapping(value="/createBooking")
-    public void createNewBooking(@RequestParam long customerId,
+    public String createNewBooking(@RequestParam long customerId,
                                  @RequestParam long vehicleId,
                                  @RequestParam Date startDate,
                                  @RequestParam Date endDate,
@@ -59,8 +59,7 @@ public class BookingController {
         long bookingId = bookingService.createNewBooking(deposit, customerId,vehicleId,startDate,endDate, deposit,vehicleDamaged, intendedDays);
 
         model.put("bookingId",bookingId);
-
-
+        return "booking";
     }
 
     /**
@@ -69,7 +68,7 @@ public class BookingController {
      */
     @RequestMapping(value="/retrieveBooking")
     @ResponseBody
-    public void retrieveExistingBooking(@RequestParam long bookingId, ModelMap  model){
+    public String retrieveExistingBooking(@RequestParam long bookingId, ModelMap  model){
         Booking booking = bookingService.getBookingDetails(bookingId);
         model.put("deposit", booking.getDeposit() );
         model.put("endDate", booking.getEndDate());
@@ -95,7 +94,7 @@ public class BookingController {
         model.put("postCode", address.getPostcode());
         model.put("addressID", address.getAddressId());
 
-
+        return "booking";
     }
 
     /**
@@ -103,7 +102,7 @@ public class BookingController {
      * when required
      */
     @RequestMapping(value="/updateBooking")
-    public void updateBooking(@RequestParam long bookingId,
+    public String updateBooking(@RequestParam long bookingId,
                               @RequestParam long customerId,
                               @RequestParam long vehicleId,
                               @RequestParam Date startDate,
@@ -119,6 +118,7 @@ public class BookingController {
         Booking booking = new Booking(bookingId, customerId, vehicleId, startDate,endDate, totalPrice,deposit, vehicleDamaged, closed,daysIntended) ;
         bookingService.updateBooKing(booking);
 
+        return "booking";
 
     }
 
@@ -127,7 +127,7 @@ public class BookingController {
      * cancelled
      */
     @RequestMapping(value="/closeBooking")
-    public void closeBooking(@RequestParam long bookingId,
+    public String closeBooking(@RequestParam long bookingId,
                              @RequestParam long customerId,
                              @RequestParam long vehicleId,
                              @RequestParam Date startDate,
@@ -143,6 +143,7 @@ public class BookingController {
         Booking booking = new Booking(bookingId, customerId, vehicleId, startDate,endDate, totalPrice,deposit, vehicleDamaged, closed,daysIntended) ;
         bookingService.closeBooking(booking);
 
+        return "booking";
     }
 
 }

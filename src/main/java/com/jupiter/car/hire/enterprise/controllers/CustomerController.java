@@ -27,7 +27,7 @@ public class CustomerController {
      * @return
      */
     @RequestMapping(value="/getCustomer")
-    public Customer retrieveCustomer(@RequestParam String email, ModelMap model){
+    public String retrieveCustomer(@RequestParam String email, ModelMap model){
         Customer customer = customerService.findCustomerByEmail(email);
         model.put("companyName",customer.getCompanyName());
         model.put("costumerType",customer.getCustomerType().toString());
@@ -36,7 +36,8 @@ public class CustomerController {
         model.put("surname",customer.getSurname());
         model.put("telephone",customer.getTelephone());
         model.put("customerId",customer.getCustomerId());
-        return customer;
+
+        return "booking";
     }
 
 
@@ -60,8 +61,8 @@ public class CustomerController {
      * @param postcode
      * @param model
      */
-    @RequestMapping(value="/getCustomer")
-    public void createNewCustomer(@RequestParam long addressId,
+    @RequestMapping(value="/createCustomer")
+    public String createNewCustomer(@RequestParam long addressId,
                                   @RequestParam  String firstName,
                                   @RequestParam String surname,
                                   @RequestParam String companyName,
@@ -84,6 +85,7 @@ public class CustomerController {
                 customerTypeEnum,  email,  telephone,  address);
 
         customerService.addCustomer(customer);
+        return "booking";
 
     }
 

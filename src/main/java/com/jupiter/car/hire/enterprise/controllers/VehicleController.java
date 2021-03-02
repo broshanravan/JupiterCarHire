@@ -27,13 +27,13 @@ public class VehicleController {
      * @return
      */
     @RequestMapping(value="/getVehicleDetails")
-    public Vehicle getVehicle(@RequestParam String RegistrationNum, ModelMap model){
+    public String getVehicle(@RequestParam String RegistrationNum, ModelMap model){
         Vehicle Vehicle = vehicleService.retrieveVehicleByReg(RegistrationNum);
         model.put("registration",Vehicle.getRegistration());
         model.put("vehicleType",Vehicle.getVehicleType());
         model.put("engineSize",Vehicle.getEngineSize());
         model.put("dailyRentalPrice",Vehicle.getPricePerDay());
-        return Vehicle;
+        return "vehicleMaintenance";
 
     }
 
@@ -51,7 +51,7 @@ public class VehicleController {
      * @param model
      */
     @RequestMapping(value="/updateVehicleDetails")
-    public void updateVehicleDetails(@RequestParam String RegistrationNum,
+    public String updateVehicleDetails(@RequestParam String RegistrationNum,
                                      @RequestParam long vehicleId,
                                      @RequestParam VehicleType vehicleType,
                                      @RequestParam String registration,
@@ -60,7 +60,7 @@ public class VehicleController {
                                      ModelMap model){
         Vehicle vehicle = new  Vehicle(vehicleId, vehicleType,  registration, engineSize, pricePerDay);
         vehicleService.updateVehicleDetails(vehicle);
-
+        return "vehicleMaintenance";
 
     }
 
@@ -79,7 +79,7 @@ public class VehicleController {
      * @param model
      */
     @RequestMapping(value="/newVehicleDetails")
-    public void createNewVehicle(@RequestParam String RegistrationNum,
+    public String createNewVehicle(@RequestParam String RegistrationNum,
                                      @RequestParam VehicleType vehicleType,
                                      @RequestParam String registration,
                                      @RequestParam long engineSize,
@@ -87,6 +87,8 @@ public class VehicleController {
                                  ModelMap model){
         Vehicle vehicle = new  Vehicle(vehicleType,  registration, engineSize, pricePerDay);
         vehicleService.updateVehicleDetails(vehicle);
+
+        return "vehicleMaintenance";
     }
 }
 
