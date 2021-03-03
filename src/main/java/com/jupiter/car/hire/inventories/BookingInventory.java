@@ -13,6 +13,7 @@ public interface BookingInventory {
     public long createNewBooking(Booking booking);
     public void closeBooking (Booking booking);
     public void updateNewBooking(Booking booking);
+    public void cancelBooking(long bookingId);
 
 
 }

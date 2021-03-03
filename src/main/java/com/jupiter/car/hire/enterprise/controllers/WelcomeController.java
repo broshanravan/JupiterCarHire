@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 @Controller
 public class WelcomeController {
 
@@ -32,7 +35,7 @@ public class WelcomeController {
      * @param model
      * @return
      */
-    @RequestMapping(value="/getVehicleDetails")
+    @RequestMapping(value="/findVehicleByReg", params="start.do",method=RequestMethod.POST)
     public String getVehicle(@RequestParam String RegistrationNum, ModelMap model){
         Vehicle Vehicle = vehicleService.retrieveVehicleByReg(RegistrationNum);
         model.put("registration",Vehicle.getRegistration());
@@ -58,7 +61,7 @@ public class WelcomeController {
      * @param model
      * @return
      */
-    @RequestMapping(value="/getCustomerByEmail")
+    @RequestMapping(value="/findCustomerByEmail", params="start.do",method=RequestMethod.POST)
     public String retrieveCustomer(@RequestParam String email, ModelMap model){
         Customer customer = customerService.findCustomerByEmail(email);
         if(customer.getCustomerId() != 0){
@@ -79,7 +82,7 @@ public class WelcomeController {
      * retrieves an exist booking using the booking
      * Reference number
      */
-    @RequestMapping(value="/retrieveBookingById")
+    @RequestMapping(value="/findBookingByNum", params="start.do",method=RequestMethod.POST)
     @ResponseBody
     public String retrieveExistingBooking(@RequestParam long bookingId, ModelMap  model){
         Booking booking = bookingService.getBookingDetails(bookingId);
@@ -118,7 +121,7 @@ public class WelcomeController {
      * retrieves an exist booking using the booking
      * Reference number
      */
-    @RequestMapping(value="/retrieveBookingByEmail")
+    @RequestMapping(value="/findBookingByReg",params="start.do",method=RequestMethod.POST)
     @ResponseBody
     public String retrieveBookingByVehicleReg(@RequestParam String registration, ModelMap  model){
         Booking booking = bookingService.getBookingDetailsByVehicleReg(registration);

@@ -150,8 +150,7 @@
 					<table>
 						<tr height="40px">
 							<td>
-								<!--<input type="button" value="create" name="submit1" onClick="submitMe( this.form )"> -->
-								<div class="btn-wrapper">
+								<div class="btn-wrapper" action="createBooking">
 									<button class="btn">
 										<span class="btn-text-one">Create</span>
 									</button>
@@ -161,7 +160,7 @@
 							<td><label for="sp1">&emsp;</label></td>
 							<td>
 								<div class="btn-wrapper">
-									<button class="btn">
+									<button class="btn" action="updateBooking">
 										<span class="btn-text-one">Update</span>
 									</button>
 								</div>
@@ -173,7 +172,7 @@
 
 							<td>
 								<div class="btn-wrapper">
-									<button class="btn">
+									<button class="btn" action="closeBooking">
 										<span class="btn-text-one">Close</span>
 									</button>
 								</div>
@@ -184,7 +183,7 @@
 
 							<td>
 								<div class="btn-wrapper">
-									<button class="btn">
+									<button class="btn" cancel>
 										<span class="btn-text-one">Cancel</span>
 									</button>
 								</div>

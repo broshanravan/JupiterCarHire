@@ -20,6 +20,8 @@ public interface BookingService {
 
     public void closeBooking(Booking booking);
 
+    public void cancelBooking(long bookingId);
+
     public long createNewBooking(double depositAmount,
                                  long customerId,
                                  long vehicleId,

@@ -158,6 +158,16 @@ public class BookingServiceImpl implements BookingService{
     }
 
     /**
+     * cancel existing booking at customer
+     * Request
+     * @param bookingId
+     */
+    public void cancelBooking(long bookingId){
+        bookingInventory.cancelBooking(bookingId);
+
+    }
+
+    /**
      * calculating final amount
      * due from customer
      * @param startDate

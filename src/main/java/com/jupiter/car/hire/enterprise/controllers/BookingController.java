@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -29,7 +30,7 @@ public class BookingController {
     /**
      * uses to user input to create a new bookinf
      */
-    @RequestMapping(value="/createBooking")
+    @RequestMapping(value="/createBooking", params="booking.do",method= RequestMethod.POST)
     public String createNewBooking(@RequestParam long customerId,
                                  @RequestParam long vehicleId,
                                  @RequestParam Date startDate,
@@ -66,7 +67,7 @@ public class BookingController {
      * retrieves an exist booking using the booking
      * Reference number
      */
-    @RequestMapping(value="/retrieveBooking")
+    @RequestMapping(value="/retrieveBooking", params="booking.do",method= RequestMethod.POST)
     @ResponseBody
     public String retrieveExistingBooking(@RequestParam long bookingId, ModelMap  model){
         Booking booking = bookingService.getBookingDetails(bookingId);
@@ -101,7 +102,7 @@ public class BookingController {
      * update existing bookings
      * when required
      */
-    @RequestMapping(value="/updateBooking")
+    @RequestMapping(value="/updateBooking", params="booking.do",method= RequestMethod.POST)
     public String updateBooking(@RequestParam long bookingId,
                               @RequestParam long customerId,
                               @RequestParam long vehicleId,
@@ -126,7 +127,7 @@ public class BookingController {
      * closes a booking when completed or
      * cancelled
      */
-    @RequestMapping(value="/closeBooking")
+    @RequestMapping(value="/closeBooking", params="booking.do",method= RequestMethod.POST)
     public String closeBooking(@RequestParam long bookingId,
                              @RequestParam long customerId,
                              @RequestParam long vehicleId,
@@ -139,10 +140,15 @@ public class BookingController {
                              @RequestParam int daysIntended, ModelMap model){
 
 
-
         Booking booking = new Booking(bookingId, customerId, vehicleId, startDate,endDate, totalPrice,deposit, vehicleDamaged, closed,daysIntended) ;
         bookingService.closeBooking(booking);
 
+        return "booking";
+    }
+
+    @RequestMapping(value="/cancelBooking", params="booking.do",method= RequestMethod.POST)
+    public String cancel(@RequestParam long bookingId, ModelMap model){
+        bookingService.cancelBooking(bookingId);
         return "booking";
     }
 

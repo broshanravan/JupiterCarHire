@@ -43,4 +43,6 @@ public class CustomerServiceImpl implements CustomerService {
         customerInventory.updateCustomerDetails(customer);
 
     }
+
+
 }

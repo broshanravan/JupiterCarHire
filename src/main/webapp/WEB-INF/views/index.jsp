@@ -26,7 +26,7 @@
 			<table>
 
 				<tr>
-					<td width ="50"><h3 for="velicletDetaildLbl">Bookings</h3></td>
+					<td width ="50"><h3 for="vehicleDetailsLbl">Bookings</h3></td>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -38,7 +38,7 @@
 					<td><input type="text" id="bookingNum"/></td>
 					<td>
 						<div class="btn-wrapper">
-							<button class="btn">
+							<button class="btn" action ="findBookingByNum">
 								<span class="btn-text-one">Find Booking</span>
 							</button>
 						</div>
@@ -53,7 +53,7 @@
 					<td><input type="text" id="vehicleReg"/></td>
 					<td>
 						<div class="btn-wrapper">
-							<button class="btn">
+							<button class="btn" action= "findBookingByReg">
 								<span class="btn-text-one">Find Booking</span>
 							</button>
 						</div>
@@ -61,7 +61,7 @@
 				</tr>
 
 				<tr>
-					<td width ="50"><h3 for="velicletDetaildLbl">Customers:</h3></td>
+					<td width ="50"><h3 for="customerLbl">Customers:</h3></td>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -73,7 +73,7 @@
 					<td><label for ="emailLbl">Customer Email</label></td>
 					<td><input type="text" id="email"/></td>
 					<td>
-						<div class="btn-wrapper">
+						<div class="btn-wrapper" action ="findCustomerByEmail">
 							<button class="btn">
 								<span class="btn-text-one">find Customer</span>
 							</button>
@@ -96,7 +96,7 @@
 					<td><input type="text" id="registrationNum"/></td>
 					<td>
 							<div class="btn-wrapper">
-								<button class="btn">
+								<button class="btn" action="findVehicleByReg">
 									<span class="btn-text-one">find Vehicle</span>
 								</button>
 							</div>
