@@ -21,6 +21,13 @@
 				<tr height="40px">
 					<td><label for ="registrationLbl">Registration</label></td>
 					<td><input type="text" id="registration" val;ue="${registration}"/></td>
+					<td>
+                        <div class="btn-wrapper">
+                            <button class="btn" action="RetrieveVehicleDetails">
+                                <span class="btn-text-one">search</span>
+                            </button>
+                        </div>
+                    </td>
 				</tr>
 				<tr height="40px" >
 					<td><label for="vehicleTypeLbl">Vehicle Type</label></td>
@@ -51,7 +58,7 @@
 						<tr height="40px">
 							<td>
 								<div class="btn-wrapper">
-									<button class="btn">
+									<button class="btn" action="addNewVehicle">
 										<span class="btn-text-one">Create</span>
 									</button>
 								</div>
@@ -60,7 +67,7 @@
 							<td><label for="sp1">&emsp;</label></td>
 							<td>
 								<div class="btn-wrapper">
-									<button class="btn">
+									<button class="btn" action="updateVehicle">
 										<span class="btn-text-one">Update</span>
 									</button>
 								</div>
@@ -71,7 +78,7 @@
 
 							<td>
 								<div class="btn-wrapper">
-									<button class="btn">
+									<button class="btn" action="removeVehicle">
 										<span class="btn-text-one">Remove</span>
 									</button>
 								</div>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -26,7 +27,7 @@ public class VehicleController {
      * @param model
      * @return
      */
-    @RequestMapping(value="/getVehicleDetails")
+    @RequestMapping(value="/RetrieveVehicleDetails", params="vehicle.do",method= RequestMethod.POST)
     public String getVehicle(@RequestParam String RegistrationNum, ModelMap model){
         Vehicle Vehicle = vehicleService.retrieveVehicleByReg(RegistrationNum);
         model.put("registration",Vehicle.getRegistration());
@@ -50,7 +51,7 @@ public class VehicleController {
      * @param pricePerDay
      * @param model
      */
-    @RequestMapping(value="/updateVehicleDetails")
+   @RequestMapping(value="/updateVehicle", params="vehicle.do",method= RequestMethod.POST)
     public String updateVehicleDetails(@RequestParam String RegistrationNum,
                                      @RequestParam long vehicleId,
                                      @RequestParam VehicleType vehicleType,
@@ -78,7 +79,7 @@ public class VehicleController {
      * @param pricePerDay
      * @param model
      */
-    @RequestMapping(value="/newVehicleDetails")
+    @RequestMapping(value="/addNewVehicle", params="vehicle.do",method= RequestMethod.POST)
     public String createNewVehicle(@RequestParam String RegistrationNum,
                                      @RequestParam VehicleType vehicleType,
                                      @RequestParam String registration,
