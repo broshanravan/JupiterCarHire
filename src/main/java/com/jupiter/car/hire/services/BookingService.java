@@ -1,4 +1,4 @@
-package com.jupiter.car.hire.business;
+package com.jupiter.car.hire.services;
 
 import com.jupiter.car.hire.beans.Booking;
 import com.jupiter.car.hire.beans.Payment;

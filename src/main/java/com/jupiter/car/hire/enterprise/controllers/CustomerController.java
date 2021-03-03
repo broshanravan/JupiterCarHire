@@ -2,7 +2,7 @@ package com.jupiter.car.hire.enterprise.controllers;
 
 import com.jupiter.car.hire.beans.Address;
 import com.jupiter.car.hire.beans.Customer;
-import com.jupiter.car.hire.business.CustomerService;
+import com.jupiter.car.hire.services.CustomerService;
 import com.jupiter.car.hire.enums.CustomerType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

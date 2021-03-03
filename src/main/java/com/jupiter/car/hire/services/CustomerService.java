@@ -3,7 +3,9 @@ package com.jupiter.car.hire.services;
 import com.jupiter.car.hire.beans.Customer;
 
 public interface CustomerService {
-    public Customer retrieveCustomer(String surname, String houseNumber, String Postcode);
-    public String addNewCustomer(Customer customer);
-    public void updateCustomer(Customer customer);
+    public long addCustomer(Customer customer);
+    public Customer findCustomerByEmail(String email);
+    public Customer findCustomer(long customerId);
+    public void updateCustomerDetails(Customer customer);
+
 }
